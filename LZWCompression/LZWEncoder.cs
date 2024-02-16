@@ -98,8 +98,8 @@ namespace LZWCompression
 			byte[] bytesToWrite = new byte[bytesCount];
 			File.WriteAllBytes(filePath, bytesToWrite);
 #if USE_READABLE_BUFFERS
-			File.WriteAllText(filePath + "words.txt", String.Join("\n", _encodedWords));
-			File.WriteAllText(filePath + "codes.txt", String.Join(" ", _encodedCodes));
+			File.WriteAllText(filePath + "_words.txt", String.Join("\n", _encodedWords));
+			File.WriteAllText(filePath + "_codes.txt", String.Join(" ", _encodedCodes));
 #endif
 		}
 
