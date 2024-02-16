@@ -38,6 +38,7 @@ namespace LZWCompression
 			WordToEncode = wordToEncode;
 			InitializeDictionary();
 			Encode();
+			StartingDictionary = ImmutableDictionary.CreateRange(_wordsDictionary);
 		}
 
 
@@ -49,7 +50,6 @@ namespace LZWCompression
 					AddWordInDictionary(c.ToString());
 			}
 
-			StartingDictionary = ImmutableDictionary.CreateRange(_wordsDictionary);
 		}
 
 		private void Encode()
