@@ -11,7 +11,7 @@ namespace LZWCompression
 			get;
 		}
 
-		private BitArray Result
+		public BitArray Result
 		{
 			get;
 		} = new(0);
