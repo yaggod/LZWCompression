@@ -5,11 +5,11 @@
 		static void Main(string[] args)
 		{
 			Dictionary<string, int> wordsDictionary = new();
-			string stringToEncode = File.ReadAllText(@"..\..\..\file.txt").ToUpper();
+			string stringToEncode = File.ReadAllText(@"..\..\..\input\file.txt").ToUpper();
 
 			var encoder = new LZWEncoder(stringToEncode);
-			encoder.SaveToFile(@"..\..\..\resultBinary");
-			encoder.SaveDictionaryToFile(@"..\..\..\dictionary.txt");
+			encoder.SaveToFile(@"..\..\..\output\resultBinary");
+			encoder.SaveDictionaryToFile(@"..\..\..\output\dictionary.txt");
 
             Console.WriteLine($"Result file length: {encoder.Result.Count} bits");
         }
