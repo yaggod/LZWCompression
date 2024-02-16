@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace LZWCompression
 {
-	public class LZW
+	public class LZWEncoder
 	{
 		public string WordToEncode
 		{
@@ -25,7 +25,7 @@ namespace LZWCompression
 		private int _currentWordLength;
 
 
-		public LZW(string wordToEncode)
+		public LZWEncoder(string wordToEncode)
 		{
 			WordToEncode = wordToEncode;
 			InitializeDictionary();

@@ -6,7 +6,7 @@
 		{
 			Dictionary<string, int> wordsDictionary = new();
 			string stringToEncode = File.ReadAllText(@"..\..\..\file.txt").ToUpper(); ;
-			new LZW(stringToEncode).SaveToFile(@"..\..\..\resultBinary.txt");
+			new LZWEncoder(stringToEncode).SaveToFile(@"..\..\..\resultBinary.txt");
         }
 	}
 }
