@@ -1,4 +1,4 @@
-﻿#define USE_READABLE_BUFFERS
+﻿#define CREATE_READABLE_FILES
 
 using System.Collections;
 using System.Collections.Immutable;
@@ -24,7 +24,7 @@ namespace LZWCompression
 			private set;
 		}
 
-#if USE_READABLE_BUFFERS
+#if CREATE_READABLE_FILES
 		private List<string> _encodedWords = new();
 		private List<int> _encodedCodes = new();
 #endif
@@ -82,7 +82,7 @@ namespace LZWCompression
 				Result[Result.Length - offset] = bits[offset - 1];
 			}
 
-#if USE_READABLE_BUFFERS
+#if CREATE_READABLE_FILES
 			_encodedCodes.Add(code);
 			_encodedWords.Add(word);
 #endif
@@ -107,7 +107,7 @@ namespace LZWCompression
 			Result.CopyTo(bytesToWrite, 0);
 
 			File.WriteAllBytes(filePath, bytesToWrite);
-#if USE_READABLE_BUFFERS
+#if CREATE_READABLE_FILES
 			File.WriteAllText(filePath + "_words.txt", String.Join("\n", _encodedWords));
 			File.WriteAllText(filePath + "_codes.txt", String.Join(" ", _encodedCodes));
 #endif
