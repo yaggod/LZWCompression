@@ -1,6 +1,8 @@
 ﻿#define USE_READABLE_BUFFERS
 
 using System.Collections;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 
 namespace LZWCompression
 {
@@ -22,6 +24,12 @@ namespace LZWCompression
 #endif
 
 		private Dictionary<string, int> _wordsDictionary = new();
+		public ReadOnlyDictionary<string, int> StartingDictionary
+		{
+			get;
+			private set;
+		}
+
 		private int _currentWordLength;
 
 
@@ -39,8 +47,10 @@ namespace LZWCompression
 			{
 				if (!_wordsDictionary.ContainsKey(c.ToString()))
 					AddWordInDictionary(c.ToString());
-
 			}
+
+			StartingDictionary = new(new Dictionary<string, int>(_wordsDictionary));
+
 		}
 
 		private void Encode()
@@ -105,5 +115,9 @@ namespace LZWCompression
 #endif
 		}
 
+		internal void SaveDictionaryToFile(string filePath)
+		{
+			File.WriteAllLines(filePath, StartingDictionary.Select(pair => $"{pair.Key}:\t {pair.Value}"));
+		}
 	}
 }

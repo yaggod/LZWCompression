@@ -9,6 +9,7 @@
 
 			var encoder = new LZWEncoder(stringToEncode);
 			encoder.SaveToFile(@"..\..\..\resultBinary");
+			encoder.SaveDictionaryToFile(@"..\..\..\dictionary.txt");
 
             Console.WriteLine($"Result file length: {encoder.Result.Count} bits");
         }
