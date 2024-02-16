@@ -18,18 +18,18 @@ namespace LZWCompression
 			get;
 		} = new(0);
 
+		public ImmutableDictionary<string, int> StartingDictionary
+		{
+			get;
+			private set;
+		}
+
 #if USE_READABLE_BUFFERS
 		private List<string> _encodedWords = new();
 		private List<int> _encodedCodes = new();
 #endif
 
 		private Dictionary<string, int> _wordsDictionary = new();
-		public ReadOnlyDictionary<string, int> StartingDictionary
-		{
-			get;
-			private set;
-		}
-
 		private int _currentWordLength;
 
 
@@ -49,8 +49,7 @@ namespace LZWCompression
 					AddWordInDictionary(c.ToString());
 			}
 
-			StartingDictionary = new(new Dictionary<string, int>(_wordsDictionary));
-
+			StartingDictionary = ImmutableDictionary.CreateRange(_wordsDictionary);
 		}
 
 		private void Encode()
