@@ -10,7 +10,7 @@
 			var encoder = new LZWEncoder(stringToEncode);
 			encoder.SaveToFile(@"..\..\..\resultBinary");
 
-            Console.WriteLine($"Result file length: {encoder.Result.Count}");
+            Console.WriteLine($"Result file length: {encoder.Result.Count} bits");
         }
 	}
 }
