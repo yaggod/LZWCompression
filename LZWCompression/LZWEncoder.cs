@@ -18,7 +18,7 @@ namespace LZWCompression
 			get;
 		} = new(0);
 
-		public ImmutableDictionary<string, int> StartingDictionary
+		public ReadOnlyDictionary<string, int> StartingDictionary
 		{
 			get;
 			private set;
@@ -38,7 +38,6 @@ namespace LZWCompression
 			WordToEncode = wordToEncode;
 			InitializeDictionary();
 			Encode();
-			StartingDictionary = ImmutableDictionary.CreateRange(_wordsDictionary);
 		}
 
 
@@ -49,7 +48,7 @@ namespace LZWCompression
 				if (!_wordsDictionary.ContainsKey(c.ToString()))
 					AddWordInDictionary(c.ToString());
 			}
-
+			StartingDictionary = new( new Dictionary<string, int>(_wordsDictionary));
 		}
 
 		private void Encode()
