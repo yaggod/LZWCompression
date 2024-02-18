@@ -46,7 +46,7 @@ namespace LZWCompression
 			foreach (char c in WordToEncode)
 			{
 				if (!_wordsDictionary.ContainsKey(c.ToString()))
-					AddWordInDictionary(c.ToString());
+					AddWordToDictionary(c.ToString());
 			}
 			StartingDictionary = new( new Dictionary<string, int>(_wordsDictionary));
 		}
@@ -59,7 +59,7 @@ namespace LZWCompression
 				string newWord = currentWord + WordToEncode[i];
 				if (!_wordsDictionary.ContainsKey(newWord))
 				{
-					AddWordInDictionary(newWord);
+					AddWordToDictionary(newWord);
 					AddWordToResult(currentWord);
 					currentWord = WordToEncode[i].ToString();
 				}
@@ -88,7 +88,7 @@ namespace LZWCompression
 #endif
 		}
 
-		private void AddWordInDictionary(string word)
+		private void AddWordToDictionary(string word)
 		{
 			_wordsDictionary.Add(word, _wordsDictionary.Count);
 			if (IsPowerOfTwo(_wordsDictionary.Count))
