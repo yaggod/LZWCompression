@@ -4,11 +4,11 @@
 	{
 		static void Main(string[] args)
 		{
-			string stringToEncode = File.ReadAllText(@"..\..\..\input\file.txt").ToUpper();
+			string stringToEncode = File.ReadAllText(Path.Combine(@"..\..\..\input\file.txt")).ToUpper();
 
 			var encoder = new LZWEncoder(stringToEncode);
-			encoder.SaveToFile(@"..\..\..\output\resultBinary");
-			encoder.SaveDictionaryToFile(@"..\..\..\output\dictionary.txt");
+			encoder.SaveToFile(Path.Combine(@"..\..\..\output\resultBinary"));
+			encoder.SaveDictionaryToFile(Path.Combine(@"..\..\..\output\dictionary.txt"));
 
             Console.WriteLine($"Result file length: {encoder.Result.Count} bits");
         }
