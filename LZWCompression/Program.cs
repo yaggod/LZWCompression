@@ -4,7 +4,6 @@
 	{
 		static void Main(string[] args)
 		{
-			Dictionary<string, int> wordsDictionary = new();
 			string stringToEncode = File.ReadAllText(@"..\..\..\input\file.txt").ToUpper();
 
 			var encoder = new LZWEncoder(stringToEncode);
