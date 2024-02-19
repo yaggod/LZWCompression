@@ -14,7 +14,8 @@
 			float oldSize = stringToEncode.Length * 8;
 			float oldSizeSimplest = stringToEncode.Length * MathF.Ceiling(MathF.Log2(encoder.StartingDictionary.Count));
 
-			Console.WriteLine($"Result file length: {newSize} bits\n");
+			Console.WriteLine($"Result file length: \n\t{newSize} bits");
+			Console.WriteLine($"Original file length: \n\t{oldSize} bits for UTF-8\n\t{oldSizeSimplest} bits for simplest encoding\n");
 
 			Console.WriteLine($"k = {oldSize / newSize:N2} compared with UTF-8");
 			Console.WriteLine($"k = {oldSizeSimplest / newSize:N2} compared with simplest encoding\n");
