@@ -10,7 +10,13 @@
 			encoder.SaveToFile(Path.Combine(@"../../../output/resultBinary"));
 			encoder.SaveDictionaryToFile(Path.Combine(@"../../../output/dictionary.txt"));
 
-            Console.WriteLine($"Result file length: {encoder.Result.Count} bits");
-        }
+			float newSize = encoder.Result.Count;
+			float oldSize = stringToEncode.Length * sizeof(char) * 8;
+
+			Console.WriteLine($"Result file length: {newSize} bits");
+
+			Console.WriteLine($"k = {oldSize / newSize:N2}");
+			Console.WriteLine($"S = {(newSize /oldSize):P2}");
+		}
 	}
 }
